@@ -1,0 +1,15 @@
+class Solution {
+public:
+   void re(int i,vector<char>&s){
+     int n = s.size();
+       if(i>=n/2){
+         return;
+       }
+       swap(s[i],s[n-i-1]);
+       re(i+1,s);
+   }
+    void reverseString(vector<char>& s) {
+     int n = s.size();
+     re(0,s);
+    }
+};
