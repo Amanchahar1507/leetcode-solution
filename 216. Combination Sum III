@@ -1,0 +1,29 @@
+class Solution {
+public:
+    
+    void solve(int index, vector<int>&ds, vector<vector<int>>&ans,int k, int n){
+        if(k==0){
+            if(n==0){
+            ans.push_back(ds);
+            }
+        return;   
+        }
+        //if(sum>n)return;
+        if(index>9)return;
+        
+        //sum = sum+index;
+        ds.push_back(index);
+        solve(index+1,ds,ans,k-1,n-index);
+        //sum = sum -index;
+        ds.pop_back();
+        
+        solve(index+1,ds,ans,k,n);
+    }
+    vector<vector<int>> combinationSum3(int k, int n) {
+      vector<vector<int>>ans;
+        vector<int>ds;
+        //int sum=0;
+        solve(1,ds,ans,k,n);
+        return ans;
+    }
+};
