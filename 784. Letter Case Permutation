@@ -1,0 +1,32 @@
+class Solution {
+public:
+    void solve( string s, string ds, vector<string>&ans){
+        if(s.length()==0){
+            ans.push_back(ds);
+            return;
+        }
+        if(isalpha(s[0])){
+            string ds1 = ds;
+            string ds2 = ds;
+            ds1.push_back(tolower(s[0]));
+            ds2.push_back(toupper(s[0]));
+            s.erase(s.begin()+0);
+            solve(s,ds1,ans);
+            solve(s,ds2,ans);
+        }
+        else
+        {
+            string ds3 = ds;
+            ds3.push_back(s[0]);
+            s.erase(s.begin()+0);
+            solve(s,ds3,ans);
+        }
+        
+    }
+    vector<string> letterCasePermutation(string s) {
+      vector<string>ans;
+        string ds="";
+        solve(s,ds,ans);
+        return ans;
+    }
+};
