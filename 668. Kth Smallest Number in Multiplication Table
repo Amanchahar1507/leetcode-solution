@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int countNo(int m, int n, int mid){
+        int count = 0;
+        for(int i=1;i<=m;i++){
+            count +=min(mid/i,n);
+        }
+        return count;
+    }
+    int findKthNumber(int m, int n, int k) {
+       int start = 1;
+        int end = m*n;
+        int mid;
+        while(start<end){
+            mid = start +(end-start)/2;
+            int count = countNo(m,n,mid);
+            if(count>=k){
+                end = mid;
+            }
+            else{
+                start = mid +1;
+            }
+        }
+        return start;
+    }
+};
