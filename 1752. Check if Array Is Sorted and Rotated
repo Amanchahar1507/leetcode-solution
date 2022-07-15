@@ -1,0 +1,53 @@
+link = https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/
+
+class Solution {
+public:
+    // int pivotNo(vector<int>&nums){
+    //     int s = 0;  
+    //     int e = nums.size()-1;
+    //     int mid;
+    //     while(s<=e){
+    //         mid = s + (e-s)/2;
+    //         if(nums[mid]>=nums[s]){
+    //             s = mid +1;
+    //         }
+    //         else{
+    //             e = mid;
+    //         }
+    //     }
+    //     return s;
+    // }
+    bool check(vector<int>& nums) {
+//        int n = nums.size();
+//         int pivot = pivotNo(nums);
+//         for(int i=0;i<nums.size();i++){
+//             if(nums[i]<nums[i+1]){
+//                 return true;
+//             }
+//         }
+//         if(nums[pivot]<nums[0] && nums[0]>nums[n-1]){
+//             return true;
+//         }
+        
+//         return false;
+        
+        int n = nums.size();
+        int count = 0;
+        for(int i=1;i<n;i++){
+            if(nums[i-1]>nums[i]){
+                count++;
+            }
+        }
+        if(nums[0]<nums[n-1]){
+            count++;
+        }
+        if(count<=1){
+            return true;
+        }
+        else{
+        return false;
+        }
+         
+       
+    }
+};
