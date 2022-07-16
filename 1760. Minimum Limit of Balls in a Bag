@@ -1,0 +1,30 @@
+class Solution {
+public:
+   bool check(vector<int>& nums,int op,int mid)
+    {
+        for(auto i:nums)
+        {
+            op-=(i/mid);
+            if(i%mid==0) op++;
+        }
+        return op>=0;
+    }
+    int minimumSize(vector<int>& nums, int maxOperations) {
+        long long l=1,r=INT_MAX;
+        int ans=-1;
+        while(l<=r)
+        {
+            long long mid=l+(r-l)/2;
+            if(check(nums,maxOperations,mid))
+            {
+                ans=mid;
+                r=mid-1;
+            }
+            else
+            {
+                l=mid+1;
+            }
+        }
+        return ans;
+    }
+};
