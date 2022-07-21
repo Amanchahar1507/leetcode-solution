@@ -1,0 +1,27 @@
+link = https://leetcode.com/problems/valid-perfect-square/
+
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+       int s =0;
+        int e = num-1;
+        long long int mid;
+        if(num==1){
+            return true;
+        }
+        while(s<=e){
+            mid = s + (e-s)/2;
+            long long int square = mid*mid;
+            if(square == num){
+                return true;
+            }
+            else if(square>num){
+                e = mid -1;
+            }
+            else{
+                s = mid+1;
+            }
+        }
+        return false;
+    }
+};
